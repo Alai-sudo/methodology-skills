@@ -164,6 +164,78 @@ Real-time task status and team collaboration records.
 
 ---
 
+## Independent Workspace Setup (Multi-Agent)
+
+When multiple agents work on the same codebase simultaneously, each agent MUST create an isolated workspace to prevent conflicts.
+
+### Why Worktree?
+
+Git worktree allows multiple working directories from a single repository. Each agent works in its own directory with its own branch, enabling true parallel development without stepping on each other's toes.
+
+### Naming Convention
+
+Use poetic, evocative names that give each agent a distinct identity:
+
+**Worktree directories** (in parent folder):
+```
+../worktree_of_wandering_cloud/
+../worktree_of_silent_river/
+../worktree_of_autumn_leaf/
+../worktree_of_morning_dew/
+../worktree_of_distant_thunder/
+```
+
+**Branch names** (matching the identity):
+```
+agent/wandering-cloud/feat-xxx
+agent/silent-river/fix-yyy
+agent/autumn-leaf/refactor-zzz
+```
+
+### Setup Before Work
+
+```bash
+# 1. Generate a poetic identity (or choose one)
+AGENT_NAME="wandering-cloud"  # Be creative: moonlit-path, frozen-pine, etc.
+
+# 2. Create worktree in parent directory
+git worktree add "../worktree_of_${AGENT_NAME}" -b "agent/${AGENT_NAME}/workspace"
+
+# 3. Enter your isolated workspace
+cd "../worktree_of_${AGENT_NAME}"
+
+# 4. Create feature branch from your workspace branch
+git checkout -b "agent/${AGENT_NAME}/feat-your-task"
+```
+
+### Workspace Structure
+
+```
+parent_directory/
+├── main_repo/                      # Original repository
+├── worktree_of_wandering_cloud/    # Agent 1's workspace
+├── worktree_of_silent_river/       # Agent 2's workspace
+└── worktree_of_autumn_leaf/        # Agent 3's workspace
+```
+
+### Cleanup After Work
+
+```bash
+# After PR is merged, clean up your worktree
+cd ../main_repo
+git worktree remove "../worktree_of_${AGENT_NAME}"
+git branch -d "agent/${AGENT_NAME}/workspace"
+```
+
+### Benefits
+
+1. **No file conflicts**: Each agent edits files in a separate directory
+2. **Independent staging**: Commits don't interfere with each other
+3. **Clean separation**: Easy to track which agent did what
+4. **Parallel PRs**: Multiple PRs can be prepared simultaneously
+
+---
+
 ## Git Workflow Integration
 
 ### Before Starting (Before Creating Branch)
