@@ -1,4 +1,4 @@
-# Methodology Toolkit
+# Dev Essentials
 
 A collection of reusable Claude Code skills for efficient project management, software design, and team collaboration.
 
