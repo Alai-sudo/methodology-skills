@@ -1,6 +1,6 @@
-# Claude Skills
+# Methodology Toolkit
 
-A collection of reusable Claude Code skills for efficient project management and software design.
+A collection of reusable Claude Code skills for efficient project management, software design, and team collaboration.
 
 ## Skills
 
@@ -22,9 +22,20 @@ First-principles project management - from idea to execution with maximum effici
 
 **Core philosophy**: "The best part is no part. The best process is no process."
 
+### collaborative-progress
+
+Team progress management with structured markdown files. Use when:
+- Managing multi-person projects
+- Tracking task ownership and ETA
+- Coordinating branch workflows
+
+**Core files**: `PLAN.md`, `RISKS.md`, `PROGRESS.md`
+
+**Git integration**: Update progress on main branch before creating feature branch and after merging.
+
 ## The 5-Step Algorithm
 
-Both skills follow the same fundamental algorithm:
+All skills follow the same fundamental algorithm:
 
 1. **Question** - Challenge every requirement
 2. **Delete** - Remove parts and processes ruthlessly
